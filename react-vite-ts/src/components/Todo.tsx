@@ -45,6 +45,13 @@ const Todo = () => {
       titleRef.current.value = '';
     }
   };
+
+  // todoを追加する
+  const deleteTodo = (id: number) => {
+    const newTodos = todos.filter((todo) => todo.id !== id);
+
+    setTodos(newTodos);
+  };
   // todoの完了未完了を反転させる
   const toggleTodo = (id: number) => {
     console.log(id);
@@ -83,7 +90,7 @@ const Todo = () => {
                 <td>{element.id}</td>
                 <td>{element.title}</td>
                 <td>{element.limit}</td>
-                {/* <button onClick={deleteTodo}>Delete</button> */}
+                <button onClick={() => deleteTodo(element.id)}>Delete</button>
               </tr>
             ) : null,
           )}
